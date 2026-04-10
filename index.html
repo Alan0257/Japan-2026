@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌸 2026 大阪・京都之旅</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=Shippori+Mincho:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1008;
+    --paper: #faf7f2;
+    --warm: #f5ede0;
+    --red: #c0392b;
+    --gold: #c8902a;
+    --moss: #4a6741;
+    --indigo: #2c3e6b;
+    --muted: #7a6a58;
+    --border: #d4c5b0;
+    --day1: #c0392b;
+    --day2: #8B5E3C;
+    --day3: #4a6741;
+    --day4: #7B3F8C;
+    --day5: #2c6e8b;
+    --day6: #b8860b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.8;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--indigo);
+    color: #fff;
+    padding: 80px 40px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(192,57,43,0.3) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 30%, rgba(200,144,42,0.2) 0%, transparent 50%);
+  }
+  .hero-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image: repeating-linear-gradient(
+      45deg, #fff 0px, #fff 1px, transparent 1px, transparent 20px
+    );
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-emoji { font-size: 3rem; display: block; margin-bottom: 16px; }
+  .hero h1 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.75);
+    letter-spacing: 0.1em;
+  }
+  .hero-info {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .hero-badge {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 100px;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    backdrop-filter: blur(4px);
+  }
+
+  /* NAV */
+  nav {
+    background: var(--ink);
+    padding: 0 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar { display: none; }
+  nav a {
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    padding: 14px 16px;
+    font-size: 0.82rem;
+    white-space: nowrap;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    transition: all 0.2s;
+    border-bottom: 2px solid transparent;
+  }
+  nav a:hover { color: #fff; border-bottom-color: var(--gold); }
+
+  /* LAYOUT */
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* SECTION HEADERS */
+  .section-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--indigo);
+    margin: 56px 0 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-title .num {
+    background: var(--indigo);
+    color: white;
+    font-size: 0.85rem;
+    font-family: 'Noto Sans TC', sans-serif;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  /* DAY CARDS */
+  .day-card {
+    margin: 40px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    border: 1px solid var(--border);
+  }
+  .day-header {
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: white;
+  }
+  .day-number {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1;
+    opacity: 0.9;
+  }
+  .day-label { font-size: 0.75rem; opacity: 0.75; margin-top: 2px; letter-spacing: 0.08em; }
+  .day-title-wrap h2 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .day-title-wrap p { font-size: 0.85rem; opacity: 0.8; }
+  .day-body { padding: 24px 28px; background: white; }
+
+  /* TIMELINE */
+  .timeline { position: relative; }
+  .tl-item {
+    display: flex;
+    flex-direction: column;
+    padding: 14px 0;
+    border-bottom: 1px solid #f0ebe3;
+  }
+  .tl-item:last-child { border-bottom: none; }
+  .tl-time {
+    font-size: 0.72rem;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--indigo);
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: 8px;
+    align-self: flex-start;
+    opacity: 0.75;
+  }
+  .tl-content { font-size: 0.92rem; color: var(--ink); width: 100%; }
+  .tl-content strong { font-weight: 600; color: var(--indigo); }
+  .tl-note {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .tl-highlight {
+    background: linear-gradient(135deg, #fff8f0, #fff3e8);
+    border-left: 3px solid var(--gold);
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    margin-top: 4px;
+  }
+
+  /* TABLES */
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    margin: 12px 0;
+  }
+  .info-table th {
+    background: var(--indigo);
+    color: white;
+    padding: 9px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+  }
+  .info-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .info-table tr:nth-child(even) td { background: var(--warm); }
+  .info-table tr:last-child td { border-bottom: none; }
+
+  /* BOXES */
+  .warn-box {
+    background: #fff5f5;
+    border-left: 4px solid var(--red);
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 10px 0;
+    font-size: 0.88rem;
+    color: #8b1a1a;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .tip-box {
+    background: #f0f7ee;
+    border-left: 4px solid var(--moss);
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 10px 0;
+    font-size: 0.88rem;
+    color: #2d4a27;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .info-box {
+    background: #f0f4fb;
+    border: 1px solid #c5d3ec;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 14px 0;
+    font-size: 0.88rem;
+  }
+  .info-box h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--indigo);
+    margin-bottom: 8px;
+  }
+
+  /* SUBSECTION */
+  .subsection {
+    margin: 20px 0 8px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .subsection::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--border), transparent);
+  }
+
+  /* RESTAURANT CARD */
+  .restaurant-card {
+    background: var(--warm);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 10px 0;
+  }
+  .restaurant-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--indigo); margin-bottom: 4px; }
+  .restaurant-card p { font-size: 0.85rem; color: var(--muted); }
+  .tag {
+    display: inline-block;
+    background: var(--indigo);
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 100px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .tag.red { background: var(--red); }
+  .tag.green { background: var(--moss); }
+  .tag.gold { background: var(--gold); }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #f0ebe3;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: '□';
+    position: absolute;
+    left: 0;
+    color: var(--indigo);
+    font-size: 1rem;
+  }
+
+  /* TICKET LINK */
+  .ticket-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--red);
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 6px 0;
+    transition: background 0.2s;
+  }
+  .ticket-link:hover { background: #a93226; }
+
+  /* AIRPORTER STEPS */
+  .steps { display: flex; flex-direction: column; gap: 12px; margin: 12px 0; }
+  .step {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    font-size: 0.88rem;
+  }
+  .step-num {
+    background: var(--indigo);
+    color: white;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* SOUVENIRS GRID */
+  .souvenir-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .souvenir-item {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 0.85rem;
+  }
+  .souvenir-item h5 { font-weight: 700; color: var(--indigo); margin-bottom: 3px; }
+  .souvenir-item p { color: var(--muted); font-size: 0.8rem; }
+  .souvenir-item .where { font-size: 0.75rem; color: var(--gold); margin-top: 4px; font-weight: 600; }
+
+  /* EMERGENCY */
+  .emergency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .emergency-item {
+    background: #fff5f5;
+    border: 1px solid #f5c6c6;
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+  }
+  .emergency-item .phone { font-size: 1.3rem; font-weight: 700; color: var(--red); font-family: monospace; }
+  .emergency-item .label { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+
+  /* FLIGHT CARDS */
+  .flight-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 12px 0;
+  }
+  @media (max-width: 560px) { .flight-grid { grid-template-columns: 1fr; } }
+  .flight-card {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+  }
+  .flight-card-header {
+    background: var(--indigo);
+    color: white;
+    padding: 10px 16px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+  .flight-card-body { padding: 14px 16px; background: white; flex: 1; }
+  .flight-num { font-size: 1.5rem; font-weight: 900; color: var(--indigo); font-family: monospace; }
+  .flight-route { display: flex; align-items: center; gap: 10px; margin: 8px 0; }
+  .airport { text-align: center; }
+  .airport .code { font-size: 1.1rem; font-weight: 700; font-family: monospace; color: var(--ink); }
+  .airport .name { font-size: 0.7rem; color: var(--muted); }
+  .airport .time { font-size: 0.85rem; font-weight: 600; color: var(--gold); }
+  .flight-arrow { font-size: 1rem; color: var(--red); flex: 1; text-align: center; }
+
+  /* HOTEL GRID */
+  .hotel-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+    margin: 12px 0;
+  }
+  .hotel-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .hotel-card-header { padding: 10px 14px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; color: white; }
+  .hotel-card-body { padding: 12px 14px; background: white; }
+  .hotel-card-body h4 { font-size: 0.92rem; font-weight: 700; color: var(--indigo); margin-bottom: 6px; }
+  .hotel-card-body p { font-size: 0.82rem; color: var(--muted); margin: 2px 0; }
+
+  /* AIRPORTER TABLE */
+  .ap-row {
+    display: grid;
+    grid-template-columns: 130px 1fr 1fr;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+    font-size: 0.88rem;
+  }
+  .ap-row:last-child { border-bottom: none; }
+  .ap-date { font-weight: 700; color: var(--gold); font-size: 0.82rem; }
+  .ap-from { color: var(--muted); }
+  .ap-to { font-weight: 600; color: var(--indigo); }
+  .status-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    padding: 2px 8px;
+    border-radius: 100px;
+    font-weight: 600;
+  }
+  .status-done { background: #d4edda; color: #155724; }
+  .status-todo { background: #fff3cd; color: #856404; }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .day-body { padding: 16px; }
+    .tl-item { grid-template-columns: 90px 1fr; gap: 0 12px; }
+    .hero { padding: 50px 24px 40px; }
+  }
+
+  /* PRINT */
+  @media print {
+    nav { display: none; }
+    .day-card { break-inside: avoid; }
+    body { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <span class="hero-emoji">🌸</span>
+    <h1>2026 大阪・京都之旅</h1>
+    <p class="hero-sub">4月13日（一）－ 4月18日（六）　六日完整導遊手冊</p>
+    <div class="hero-info">
+      <span class="hero-badge">✈️ 台灣虎航 IT210 / IT211</span>
+      <span class="hero-badge">👤 Yu Chiao-Hui（2位成人）</span>
+      <span class="hero-badge">🏨 3間飯店</span>
+      <span class="hero-badge">🎢 USJ Express Pass 5</span>
+    </div>
+    <div style="margin-top:20px">
+      <a href="https://drive.google.com/drive/folders/19cPh6lcb6vEjI4cz6a05RXevW6A4ENvi?usp=sharing" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.35);border-radius:100px;padding:10px 24px;color:white;text-decoration:none;font-size:0.9rem;font-weight:600;backdrop-filter:blur(4px);transition:background 0.2s">
+        📁 所有旅遊文件雲端資料夾 ↗
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#flights">✈️ 航班</a>
+  <a href="#hotels">🏨 住宿</a>
+  <a href="#airporter">🧳 Airporter</a>
+  <a href="#prep">📋 準備</a>
+  <a href="#day1">Day 1</a>
+  <a href="#day2">Day 2 USJ</a>
+  <a href="#day3">Day 3</a>
+  <a href="#day4">Day 4</a>
+  <a href="#day5">Day 5</a>
+  <a href="#day6">Day 6</a>
+  <a href="#souvenirs">🎁 伴手禮</a>
+  <a href="#checklist">✅ 確認清單</a>
+  <a href="#emergency">🆘 緊急</a>
+</nav>
+
+<div class="container">
+
+  <!-- FLIGHTS -->
+  <div id="flights">
+    <div class="section-title"><span class="num">一</span>航班資訊</div>
+    <div class="flight-grid">
+      <div class="flight-card">
+        <div class="flight-card-header">🛫 去程　台灣虎航 Tigerlight</div>
+        <div class="flight-card-body">
+          <div class="flight-num">IT210</div>
+          <div class="flight-route">
+            <div class="airport">
+              <div class="code">TPE</div>
+              <div class="name">桃園國際機場 T1</div>
+              <div class="time">06:40</div>
+            </div>
+            <div class="flight-arrow">──✈──▶</div>
+            <div class="airport">
+              <div class="code">KIX</div>
+              <div class="name">大阪關西機場 T1</div>
+              <div class="time">10:25</div>
+            </div>
+          </div>
+          <p style="font-size:0.8rem;color:var(--muted)">2026/04/13（一）</p>
+          <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+            <a href="https://mail.google.com/mail/u/0/popout?ver=1kb54q60x21o5&q=%E8%99%8E%E8%88%AA&qs=true&qid=5A79BD6F-57E6-410E-AD8B-32D25F5B2992&search=query&sortop=2&silk=130DD52D-3280-4106-99E3-04158CCF529D&th=%23thread-f%3A1852567495343154885&qt=%E8%99%8E%E8%88%AA.&cvid=1" target="_blank" style="font-size:0.78rem;color:var(--indigo);font-weight:700;text-decoration:none">📧 倫的機票 ↗</a>
+            <a href="https://mail.google.com/mail/u/0/popout?ver=1kb54q60x21o5&q=%E8%99%8E%E8%88%AA&qs=true&qid=5A79BD6F-57E6-410E-AD8B-32D25F5B2992&search=query&sortop=2&silk=130DD52D-3280-4106-99E3-04158CCF529D&th=%23thread-f%3A1861431364183328536&qt=%E8%99%8E%E8%88%AA.&cvid=2" target="_blank" style="font-size:0.78rem;color:var(--indigo);font-weight:700;text-decoration:none">📧 游的機票 ↗</a>
+          </div>
+        </div>
+      </div>
+      <div class="flight-card">
+        <div class="flight-card-header">🛬 回程　台灣虎航 Tigersmart</div>
+        <div class="flight-card-body">
+          <div class="flight-num">IT211</div>
+          <div class="flight-route">
+            <div class="airport">
+              <div class="code">KIX</div>
+              <div class="name">大阪關西機場 T1</div>
+              <div class="time">11:15</div>
+            </div>
+            <div class="flight-arrow">──✈──▶</div>
+            <div class="airport">
+              <div class="code">TPE</div>
+              <div class="name">桃園國際機場</div>
+              <div class="time">13:10</div>
+            </div>
+          </div>
+          <p style="font-size:0.8rem;color:var(--muted)">2026/04/18（六）</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOTELS -->
+  <div id="hotels">
+    <div class="section-title"><span class="num">二</span>住宿一覽</div>
+    <div class="hotel-cards">
+      <div class="hotel-card">
+        <div class="hotel-card-header" style="background:var(--day1)">4/13（一）－ 4/15（三）　2晚</div>
+        <div class="hotel-card-body">
+          <h4><a href="https://maps.app.goo.gl/Pf4h8vBxEvApkJocA" target="_blank" style="color:var(--indigo);text-decoration:none">環球影城東方飯店 ↗</a></h4>
+          <p>📍 大阪此花區（USJ旁步行可達）</p>
+          <p>⏰ 入住 15:00 ／ 退房 11:00前</p>
+          <p>🍳 含早餐（4/14、4/15）</p>
+          <p style="font-size:0.75rem;color:var(--muted);margin-top:6px">確認編號：1616327188098105</p>
+          <a href="https://drive.google.com/file/d/1fkSiIEVToIgLmLKoDekVu1TTRizcjRlq/view?usp=drive_link" target="_blank" style="display:inline-block;margin-top:8px;font-size:0.78rem;color:var(--indigo);font-weight:600;text-decoration:none">📄 入住憑證 ↗</a>
+        </div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-card-header" style="background:var(--day3)">4/15（三）－ 4/17（五）　2晚</div>
+        <div class="hotel-card-body">
+          <h4><a href="https://maps.app.goo.gl/adN94KKVAfYoYi4B9" target="_blank" style="color:var(--indigo);text-decoration:none">旅之棲京都飯店 ↗</a></h4>
+          <p>📍 京都下京區（河原町五條）</p>
+          <p>⏰ 入住 15:00 ／ 退房 11:00前</p>
+          <p>🚫 無早餐</p>
+          <p style="font-size:0.75rem;color:var(--muted);margin-top:6px">確認編號：1616327188321512</p>
+          <a href="https://drive.google.com/file/d/1kynhsyr4sHlBkJIxPcYjkxwnB07J9wna/view?usp=drive_link" target="_blank" style="display:inline-block;margin-top:8px;font-size:0.78rem;color:var(--indigo);font-weight:600;text-decoration:none">📄 入住憑證 ↗</a>
+        </div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-card-header" style="background:var(--day5)">4/17（五）－ 4/18（六）　1晚</div>
+        <div class="hotel-card-body">
+          <h4><a href="https://maps.app.goo.gl/1bEbVP9DhN28MZkg9" target="_blank" style="color:var(--indigo);text-decoration:none">東橫INN 大阪日本橋文樂劇場前 ↗</a></h4>
+          <p>📍 大阪中央區（近道頓堀）</p>
+          <p>⏰ 入住 15:00 ／ 退房 10:00前</p>
+          <p>🍳 含早餐（4/18）</p>
+          <p style="font-size:0.75rem;color:var(--muted);margin-top:6px">確認編號：K26010410184H01</p>
+          <a href="https://drive.google.com/file/d/1eWIF9L4oZDCOvm4aYyoPkDGuJKWj0WcI/view?usp=drive_link" target="_blank" style="display:inline-block;margin-top:8px;font-size:0.78rem;color:var(--indigo);font-weight:600;text-decoration:none">📄 入住憑證 ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AIRPORTER -->
+  <div id="airporter">
+    <div class="section-title"><span class="num">三</span>Airporter 行李寄送</div>
+    <div style="margin-bottom:14px">
+      <a href="https://airporter.co.jp/order/create/order/?city=osaka" target="_blank" class="ticket-link">🧳 Airporter 行李預約連結</a>
+    </div>
+    <div class="info-box">
+      <h4>✅ 已確認寄送：關西機場 → 東方飯店（4/13）</h4>
+      <table class="info-table" style="margin:8px 0 0">
+        <tr><td><strong>訂單編號</strong></td><td>0402-3716</td></tr>
+        <tr><td><strong>收取地點</strong></td><td>關西機場 T1 入境層 1F – <strong>JALABC Counter</strong></td></tr>
+        <tr><td><strong>存放截止</strong></td><td>2026/04/13 <strong>12:00 前</strong></td></tr>
+        <tr><td><strong>運送目的地</strong></td><td>Oriental Hotel Universal City（東方飯店）</td></tr>
+        <tr><td><strong>領取時間</strong></td><td>2026/04/13 <strong>20:00</strong></td></tr>
+        <tr><td><strong>付款狀態</strong></td><td><span class="status-badge status-done">✅ 已付款</span></td></tr>
+      </table>
+    </div>
+
+    <div class="subsection">全程寄送規劃</div>
+    <div class="ap-row" style="font-weight:700;font-size:0.8rem;color:var(--muted);border-bottom:2px solid var(--border)">
+      <div>辦理時間</div><div>從</div><div>寄往</div>
+    </div>
+    <div class="ap-row">
+      <div class="ap-date">4/13 抵達機場<br><span class="status-badge status-done">✅ 已付款</span></div>
+      <div class="ap-from">關西機場 JALABC Counter</div>
+      <div class="ap-to">東方飯店</div>
+    </div>
+    <div class="ap-row">
+      <div class="ap-date">4/14（二）晚<br><span class="status-badge status-todo">⬜ 需預約</span></div>
+      <div class="ap-from">環球影城東方飯店</div>
+      <div class="ap-to">旅之棲京都飯店</div>
+    </div>
+    <div class="ap-row">
+      <div class="ap-date">4/16（四）晚<br><span class="status-badge status-todo">⬜ 需預約</span></div>
+      <div class="ap-from">旅之棲京都飯店</div>
+      <div class="ap-to">東橫INN 大阪日本橋</div>
+    </div>
+
+    <div style="margin-top:14px">
+      <div class="warn-box">⚠️ <span>交件前先取出今晚衣物、盥洗用品；護照、現金、貴重物品請隨身攜帶</span></div>
+      <div class="warn-box">⚠️ <span>每件上限 30kg；最晚前一天 23:00 前完成預約；取件時間 16:00 後</span></div>
+    </div>
+  </div>
+
+  <!-- PREP -->
+  <div id="prep">
+    <div class="section-title"><span class="num">四</span>出發前準備清單</div>
+    <table class="info-table">
+      <thead><tr><th>類別</th><th>項目</th></tr></thead>
+      <tbody>
+        <tr><td>📄 證件</td><td>護照（有效期 6 個月以上，有空白頁）</td></tr>
+        <tr><td>✈️ 機票</td><td>虎航確認信（IT210 去程 / IT211 回程）</td></tr>
+        <tr><td>🛃 入境</td><td>Visit Japan Web（VJW）：出發前至少 6 小時完成申報，取得 QR Code</td></tr>
+        <tr><td>🎢 票券</td><td>USJ Studio Pass（另購）＋ Express Pass 5（截圖備存）</td></tr>
+        <tr><td>🧳 行李</td><td>Airporter 確認信（訂單 0402-3716）</td></tr>
+        <tr><td>👘 和服</td><td>京都きものレンタル 麗 清水店 預約確認信（4/16 09:00）</td></tr>
+        <tr><td>💳 交通卡</td><td>ICOCA：關西機場 JR 窗口購買，¥2,000（含保證金 ¥500）</td></tr>
+        <tr><td>💴 現金</td><td>建議台灣換好 ¥50,000–80,000</td></tr>
+        <tr><td>📱 App</td><td>Visit Japan Web / USJ Official App / Google Maps / Airporter</td></tr>
+        <tr><td>🎒 行李</td><td>折疊傘（USJ 禁攜超過 65cm）、行動電源、輕便背包、備份藥品</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- DAY 1 -->
+  <div id="day1">
+    <div class="section-title"><span class="num">五</span>每日行程</div>
+    <div class="day-card">
+      <div class="day-header" style="background:linear-gradient(135deg,#c0392b,#96281b)">
+        <div><div class="day-number">D1</div><div class="day-label">DAY ONE</div></div>
+        <div class="day-title-wrap">
+          <h2>4/13（一）大阪 ─ 抵達日</h2>
+          <p>關西機場 → 大鳥大社 → 大阪城 → 黑門市場 → 梅田</p>
+        </div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-time">01:30</div>
+            <div class="tl-content"><strong>台中統聯客運出發</strong><div class="tl-note">→ 桃園第一航廈，車上補眠</div></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">06:40</div>
+            <div class="tl-content"><strong>虎航 IT210 起飛</strong>（桃園 TPE T1）<div class="tl-note">提前 2 小時到機場</div></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">10:25</div>
+            <div class="tl-content"><strong>抵達關西機場 KIX T1</strong><div class="tl-note">掃 VJW QR Code 快速通關，辦入境</div></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">10:25–11:00</div>
+            <div class="tl-content">
+              <strong>JALABC Counter 交行李</strong>（訂單 0402-3716）
+              <div class="tl-note">⚠️ 12:00 前務必交行李！交前先取出今天需要物品</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">11:00–12:00</div>
+            <div class="tl-content"><strong>JR 阪和線🟠 → 鳳站</strong>（往大鳥大社方向）<div class="tl-note">從關西機場直接搭乘，ICOCA 可搭，約 40–50 分</div></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">12:00–14:40</div>
+            <div class="tl-content">
+              <strong>午餐 + 大鳥大社參拜</strong>
+              <div class="tl-highlight">
+                <div style="font-weight:700;margin-bottom:6px">🍜 Mensho Osaka ramen Shiojin Otori Honten</div>
+                <div style="font-size:0.82rem;color:var(--muted)">
+                  大鳥大社旁的人氣拉麵店<br>
+                  <span class="tag gold">柚子鹽拉麵</span>
+                  <span class="tag">章魚燒拉麵</span>
+                  <span style="font-size:0.78rem">── 獨特招牌，大阪限定體驗</span>
+                </div>
+              </div>
+              <div style="margin-top:8px;font-size:0.85rem">🦅 大鳥大社：透明御守超人氣、抽運勢籤</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">14:40–15:30</div>
+            <div class="tl-content"><strong>JR 阪和線🟠 → 谷町線🟣 → 谷町四丁目</strong></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">15:30–16:45</div>
+            <div class="tl-content">
+              <strong><a href="https://maps.app.goo.gl/aLG5QV4jdDz3Jt8q9" target="_blank" style="color:var(--indigo);text-decoration:none">🏯 大阪城公園 & 天守閣 ↗</a></strong>
+              <div class="tl-note">門票 ¥1,200，16:30 停止售票</div>
+              <div class="tl-highlight" style="margin-top:6px">
+                <div style="font-size:0.82rem">
+                  <div style="margin-bottom:4px"><span class="tag gold">📸 櫻門</span> 天守閣被城門完美框住的經典構圖，必拍打卡點</div>
+                  <div style="margin-bottom:4px"><span class="tag">🐙 蛸石</span> 城內最大石頭，表面紋路神似章魚，超有趣</div>
+                  <div><span class="tag green">🏯 建築美學</span> 江戶時代建築工藝，金色虎魚裝飾屋脊</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">16:45–18:30</div>
+            <div class="tl-content">
+              <strong>🦞 黑門市場</strong>
+              <div class="tl-note">注意各店打烊時間，建議 16:30 前抵達！</div>
+              <div class="tl-highlight" style="margin-top:6px">
+                <div style="font-size:0.82rem;line-height:2.2">
+                  <div><a href="https://maps.app.goo.gl/gQX4tjyQMoYmbfR896" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🥛 高橋食品（濃郁豆漿）↗</a> <span style="color:var(--red);font-size:0.75rem">⚠️ 17:00打烊，最先去！</span></div>
+                  <div><a href="https://maps.app.goo.gl/4h3jfxLtunKx9nHB6" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🍓 三都屋（草莓大福）↗</a> <span style="color:var(--red);font-size:0.75rem">⚠️ 18:00打烊，第二個去！</span></div>
+                  <div><a href="https://maps.app.goo.gl/F634aoCizMYydsfj6" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🐟 黑門三平（前腹/中腹鮪魚）↗</a> <span style="color:var(--muted);font-size:0.75rem">20:00打烊，最後逛</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">18:30–20:00</div>
+            <div class="tl-content">
+              <strong>🛍️ 心齋橋附近踩點</strong>
+              <div class="tl-note">黑門市場結束後順路逛，熟悉環境，明後天還會來</div>
+              <div class="tl-highlight" style="margin-top:6px">
+                <div style="font-size:0.82rem;line-height:2.2">
+                  <div><a href="https://maps.app.goo.gl/hwd4UaEcqErrkKr1A" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🧳 Ginza Karen Shinsaibashi Maruwa Station ↗</a> <span style="color:var(--muted);font-size:0.75rem">── 行李箱店，先看看款式和價格</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">20:00–21:00</div>
+            <div class="tl-content"><strong>移動往東方飯店</strong><div class="tl-note">御堂筋線→JR環狀線→JR夢咲線，約 35–40 分</div></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">21:00頃</div>
+            <div class="tl-content"><strong>抵達環球影城東方飯店，辦理入住</strong><div class="tl-note">20:00 後可取回 Airporter 行李</div></div>
+          </div>
+        </div>
+        <div class="warn-box" style="margin-top:16px">⚠️ <span>今晚回飯店後辦 Airporter 第二段（4/15 寄旅之棲京都飯店），注意前台服務時間</span></div>
+      </div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div id="day2" class="day-card">
+      <div class="day-header" style="background:linear-gradient(135deg,#8B5E3C,#6b4423)">
+        <div><div class="day-number">D2</div><div class="day-label">DAY TWO</div></div>
+        <div class="day-title-wrap">
+          <h2>4/14（二）環球影城 USJ 全日</h2>
+          <p>Express Pass 5 持有者完整攻略</p>
+        </div>
+      </div>
+      <div class="day-body">
+        <div class="info-box">
+          <h4>🚶 東方飯店 → USJ 入口</h4>
+          <p style="font-size:0.88rem">步行 <strong>約 8–12 分鐘</strong>（約 600–800m），飯店有指標直通園區，不需搭車！</p>
+          <div style="margin-top:10px">
+            <a href="https://drive.google.com/drive/folders/1MXTqQUSY7JMpRI4Ki27Ho2fxQjgdlUWj?usp=drive_link" target="_blank" style="font-size:0.8rem;color:var(--indigo);font-weight:700;text-decoration:none">📁 環球影城相關資料夾 ↗</a>
+          </div>
+        </div>
+
+        <div class="subsection">Express Pass 5 時段表</div>
+        <table class="info-table">
+          <thead><tr><th>時段</th><th>設施</th><th>說明</th></tr></thead>
+          <tbody>
+            <tr><td>12:00–12:30</td><td>✅ Villain-Con Minion Blast</td><td>Express Pass 指定時段</td></tr>
+            <tr><td>15:30–16:00</td><td>✅ Super Nintendo World 入場</td><td>Express Pass 指定時段</td></tr>
+            <tr><td>15:30–16:00</td><td>✅ Mario Kart: Koopa's Challenge</td><td>Express Pass 指定時段</td></tr>
+            <tr><td>16:00–16:30</td><td>✅ Mine Cart Madness（Donkey Kong）</td><td>Express Pass 指定時段</td></tr>
+            <tr><td>開園後直衝</td><td>⭐ The Flying Dinosaur</td><td>☆ 選一，建議開園後第一個衝</td></tr>
+            <tr><td>開園後第二</td><td>⭐ Harry Potter & Forbidden Journey</td><td>☆ 選一，趁人少</td></tr>
+          </tbody>
+        </table>
+        <div class="warn-box">⚠️ <span>☆ 項目（Flying Dinosaur 和 Harry Potter）每項只能擇一使用快通，請提前決定！</span></div>
+
+        <div class="subsection">全天建議時間表</div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-time">06:00</div><div class="tl-content">起床，飯店早餐（速食即可）</div></div>
+          <div class="tl-item"><div class="tl-time">06:45–06:50</div><div class="tl-content"><strong>步行至 USJ 入口排隊</strong><div class="tl-note">開園通常 8:30–9:00</div></div></div>
+          <div class="tl-item"><div class="tl-time">開園</div><div class="tl-content"><strong>衝刺 The Flying Dinosaur</strong><div class="tl-note">人氣最高，開園後馬上去！</div></div></div>
+          <div class="tl-item"><div class="tl-time">開園+30分</div><div class="tl-content"><strong>Harry Potter & Forbidden Journey</strong><div class="tl-note">趁人少進去</div></div></div>
+          <div class="tl-item"><div class="tl-time">10:00–11:30</div><div class="tl-content">Minion Park 周邊逛逛<div class="tl-note">快通 12:00 才用</div></div></div>
+          <div class="tl-item"><div class="tl-time">12:00–12:30</div><div class="tl-content"><strong>✅ Villain-Con Minion Blast（快通）</strong></div></div>
+          <div class="tl-item"><div class="tl-time">12:30–14:00</div><div class="tl-content">午餐<div class="tl-note">推薦 Three Broomsticks 或 Minion Café</div></div></div>
+          <div class="tl-item"><div class="tl-time">14:00–15:00</div><div class="tl-content">好萊塢區、Jurassic Park 自由探索</div></div>
+          <div class="tl-item"><div class="tl-time">15:30–16:30</div><div class="tl-content"><strong>✅ Super Nintendo World + Mario Kart + Mine Cart Madness</strong><div class="tl-note">三個快通集中使用</div></div></div>
+          <div class="tl-item"><div class="tl-time">16:30–18:00</div><div class="tl-content">紀念品採購<div class="tl-note">奶油啤酒、蘑菇帽、吉卜力周邊</div></div></div>
+          <div class="tl-item"><div class="tl-time">18:00–20:00</div><div class="tl-content"><strong>夜間遊行 & 夜晚燈光</strong><div class="tl-note">非常漂亮，強烈建議留下來！</div></div></div>
+          <div class="tl-item"><div class="tl-time">20:00+</div><div class="tl-content">步行回東方飯店（8–12 分鐘）</div></div>
+        </div>
+        <div class="warn-box" style="margin-top:12px">⚠️ <span>今晚回飯店後辦 Airporter：行李寄往旅之棲京都飯店（4/15 取件）</span></div>
+      </div>
+    </div>
+
+    <!-- DAY 3 -->
+    <div id="day3" class="day-card">
+      <div class="day-header" style="background:linear-gradient(135deg,#4a6741,#344f2e)">
+        <div><div class="day-number">D3</div><div class="day-label">DAY THREE</div></div>
+        <div class="day-title-wrap">
+          <h2>4/15（三）大阪 → 京都</h2>
+          <p>木津市場 → 生活今昔館 → 天神橋 → 平等寺 → 新風館 → 鴨川 → かに銀</p>
+        </div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-time">07:00</div><div class="tl-content">東方飯店早餐（含）</div></div>
+          <div class="tl-item"><div class="tl-time">08:30</div><div class="tl-content"><strong>辦理退房，出發</strong><div class="tl-note">行李已 Airporter 寄出，輕裝</div></div></div>
+          <div class="tl-item">
+            <div class="tl-time">09:30–10:20</div>
+            <div class="tl-content">
+              <strong><a href="https://maps.app.goo.gl/rA6dsjmJhP27CtBQ8" target="_blank" style="color:var(--indigo);text-decoration:none">🦐 木津市場 ↗</a></strong>
+              <div class="tl-note">大阪知名海鮮市場，新鮮食材直接現吃！</div>
+              <div class="tl-highlight" style="margin-top:6px">
+                <div style="font-size:0.82rem;line-height:1.9">
+                  <span class="tag red">天使紅蝦</span>
+                  <span class="tag">鮭魚卵</span>
+                  <span class="tag gold">干貝</span>
+                  <span class="tag green">岩牡蠣</span>
+                  <span class="tag">鮪魚</span>
+                  <span class="tag">松葉蟹腳</span>
+                  <span class="tag green">紫蘇葉</span>
+                  <span class="tag gold">海膽</span>
+                </div>
+                <div style="margin-top:8px">
+                  <a href="https://www.youtube.com/watch?v=yVcCiLsvefc&t=83s" target="_blank" style="color:var(--red);font-size:0.8rem;font-weight:600;text-decoration:none">▶ 木津市場介紹影片 ↗</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item"><div class="tl-time">10:20–11:00</div><div class="tl-content">移動：木津市場 → 生活今昔館（天神橋筋六丁目）<div class="tl-note">地下鐵 堺筋線，約 15 分鐘</div></div></div>
+          <div class="tl-item">
+            <div class="tl-time">11:00–12:00</div>
+            <div class="tl-content">
+              <strong><a href="https://maps.app.goo.gl/KUQBm5wwxkjqmXbB6" target="_blank" style="color:var(--indigo);text-decoration:none">🏠 大阪生活今昔館 ↗</a></strong>
+              <div class="tl-note">重現明治・大正・昭和時代大阪街景，停留約 1 小時</div>
+              <div style="margin-top:6px">
+                <a href="https://www.klook.com/zh-TW/activity/45905-osaka-museum-housing-living/" target="_blank" class="ticket-link">🎟️ Klook 購票連結</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">12:00–13:40</div>
+            <div class="tl-content">
+              <strong>🛍️ 天神橋筋商店街</strong>
+              <div class="tl-note">日本最長商店街，注意各店打烊時間！</div>
+              <div class="tl-highlight" style="margin-top:6px">
+                <div style="font-size:0.82rem;line-height:2.2">
+                  <div><a href="https://maps.app.goo.gl/ufa8EkANu7vBCxr67" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🍘 天神橋 中村屋（可樂餅）↗</a> <span style="color:var(--red);font-size:0.75rem">⚠️ 18:00打烊</span></div>
+                  <div><a href="https://maps.app.goo.gl/y3pJGxsF6GVYZKej8" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🍱 UMAI屋 ↗</a> <span style="color:var(--red);font-size:0.75rem">⚠️ 18:30打烊</span></div>
+                  <div><a href="https://maps.app.goo.gl/RiDvfDAfzyv7GBT2A" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🐟 鳴門鯛燒本舖 ↗</a></div>
+                  <div><a href="https://maps.app.goo.gl/MPrfJpfSHv9TxqBG9" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🐟 魚伊 鰻魚飯 ↗</a> <span style="color:var(--muted);font-size:0.75rem">17:00開始</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item"><div class="tl-time">13:40–14:45</div><div class="tl-content"><strong>移動：大阪 → 京都</strong><div class="tl-note">JR 新快速 約 28–30 分，ICOCA 可搭，抵達後步行至平等寺</div></div></div>
+          <div class="tl-item">
+            <div class="tl-time">14:45–15:00</div>
+            <div class="tl-content">
+              <strong><a href="https://maps.app.goo.gl/vpF9KZ4WgTKHddSa7" target="_blank" style="color:var(--indigo);text-decoration:none">🐱 平等寺 ↗</a></strong>
+              <div class="tl-note">超人氣貓咪御守，祈求健康與良緣</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">15:15–17:15</div>
+            <div class="tl-content">
+              <strong><a href="https://maps.app.goo.gl/tb41JKKwVmkFW4Se8" target="_blank" style="color:var(--indigo);text-decoration:none">🏛️ 新風館 ↗</a></strong>
+              <div class="tl-note">京都設計選品概念旅館複合空間，值得慢逛</div>
+              <div class="tl-highlight" style="margin-top:6px">
+                <div style="font-size:0.82rem;line-height:2.2">
+                  <div><a href="https://maps.app.goo.gl/L6kFeXd5jvGLR3hV7" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">💅 UKA 指甲油 ↗</a> <a href="https://uka.co.jp/" target="_blank" style="color:var(--muted);font-size:0.78rem">官網</a> ── 日本設計師品牌，限定色超美</div>
+                  <div><a href="https://maps.app.goo.gl/9XDHTHQNUAGEkwxn6" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🕯️ Le Labo ↗</a> ── 京都獨賣 OSMANTHUS 19 桂花焚香</div>
+                  <div><a href="https://maps.app.goo.gl/P37UStaBCpATh7fd7" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">📒 TRAVELER'S FACTORY KYOTO ↗</a> ── 旅人手帳聖地</div>
+                  <div><a href="https://maps.app.goo.gl/og8cSnE4NyWGSZDt8" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🛍️ BEAMS JAPAN ↗</a> ── 日本職人選品</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">17:15–18:00</div>
+            <div class="tl-content">
+              <strong>🌊 鴨川納涼床</strong>（停留約 45 分鐘）
+              <div class="tl-note">4月中旬剛開放，傍晚景色最美，散步放鬆</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">18:15</div>
+            <div class="tl-content">
+              <strong><a href="https://maps.app.goo.gl/XM7DyUT61Vvus44A6" target="_blank" style="color:var(--indigo);text-decoration:none">🦀 晚餐：京都 かに銀 河原町店 ↗</a></strong>
+              <div class="tl-highlight" style="margin-top:6px">
+                <div style="font-size:0.82rem;line-height:1.9">
+                  <div>📋 <strong>預訂編號：SDG321230</strong>　2名様　<a href="https://www.hotpepper.jp/CSP/prds50?CID=4f0b6e0a49237cafdc882675c8317fd563b01a313896c5958e831112ee489f45" target="_blank" style="color:var(--indigo);font-size:0.78rem;font-weight:700">🔗 Hotpepper 預訂詳情 ↗</a></div>
+                  <div>⏰ <strong>2026/04/15（三）18:15</strong></div>
+                  <div>📍 京都府京都市中京區奈良屋町291 河原町Deck By Coast 5樓</div>
+                  <div>📞 075-606-4024</div>
+                  <div>🦀 <strong>豪華帝王蟹自助套餐 63道菜 ¥17,599/人（含稅）</strong></div>
+                  <div style="color:var(--red);font-size:0.78rem">⚠️ 更改/取消截止：2026/04/15 00:00前</div>
+                </div>
+              </div>
+              <div style="margin-top:8px">
+                <a href="https://www.youtube.com/watch?v=47Y6fVfOJkk" target="_blank" style="color:var(--red);font-size:0.8rem;font-weight:600;text-decoration:none">▶ 餐廳介紹影片 ↗</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">晚餐後</div>
+            <div class="tl-content">
+              <strong><a href="https://maps.app.goo.gl/Vmzu5JrwXwWh7kpDA" target="_blank" style="color:var(--indigo);text-decoration:none">🛍️ Kyoto LOFT ↗</a></strong>
+              <div class="tl-note">⏰ 營業到 21:00　── 從かに銀步行可達</div>
+              <div class="tl-highlight" style="margin-top:6px">
+                <div style="font-size:0.82rem;line-height:2">
+                  <div><span class="tag green">5F</span> <strong>SINN PURETE</strong> ── 天然成分保養品牌，設計感包裝超適合送禮</div>
+                  <div style="margin-top:4px"><a href="https://charming-lab.com/archives/24194" target="_blank" style="color:var(--indigo);font-size:0.78rem;font-weight:600;text-decoration:none">📖 SINN PURETE 詳細介紹 ↗</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item"><div class="tl-time">晚上</div><div class="tl-content"><strong>辦理旅之棲京都飯店入住</strong><div class="tl-note">Airporter 行李在此取件（16:00後可取，晚上回飯店領取）</div></div></div>
+        </div>
+        <div class="tip-box">💡 <span>旅之棲無早餐！回飯店前記得在附近便利商店買好明天早餐</span></div>
+      </div>
+    </div>
+
+    <!-- DAY 4 -->
+    <div id="day4" class="day-card">
+      <div class="day-header" style="background:linear-gradient(135deg,#7B3F8C,#5d2d6b)">
+        <div><div class="day-number">D4</div><div class="day-label">DAY FOUR</div></div>
+        <div class="day-title-wrap">
+          <h2>4/16（四）京都深度遊</h2>
+          <p>和服拍照 → Ramen Nishiki → 二寧坂三寧坂 → 伏見稻荷 → 京都百貨/唐吉訶德</p>
+        </div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-time">09:00前</div>
+            <div class="tl-content">
+              <strong><a href="https://maps.app.goo.gl/YJAsWfSC8SLfvaVJ8" target="_blank" style="color:var(--indigo);text-decoration:none">👘 京都きものレンタル 麗 清水店 ↗</a></strong>（已預約）
+              <div class="tl-note">攜帶預約確認信，09:00前到店換裝，著裝約 30–40 分</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">09:00–11:00</div>
+            <div class="tl-content">
+              <strong>穿和服拍照</strong>
+              <div class="tl-note">📸 <strong>白川</strong>一帶拍照，石板橋＋柳樹＋和服 = 絕美構圖！09:30 前人潮最少</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">11:00</div>
+            <div class="tl-content">
+              <strong><a href="https://maps.app.goo.gl/NFbV6X2VNJyz1Ajn7" target="_blank" style="color:var(--indigo);text-decoration:none">🍜 Ramen Nishiki ↗</a></strong>（11:00開門）
+              <div class="tl-note">只有 7 個座位，拍照結束後立刻趕去排！<br>⚠️ <strong>不推抹茶口味</strong>，請選其他口味</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">11:45–13:15</div>
+            <div class="tl-content">
+              <strong>
+                <a href="https://maps.app.goo.gl/YbHgTWc4xJPutG3k6" target="_blank" style="color:var(--indigo);text-decoration:none">🪨 二寧坂 ↗</a>
+                ＋
+                <a href="https://maps.app.goo.gl/7Xdb5FzQ5Qmff1wcA" target="_blank" style="color:var(--indigo);text-decoration:none">三寧坂 ↗</a>
+              </strong>
+              <div class="tl-note">石板路慢逛，預計停留 1.5 小時</div>
+              <div class="tl-highlight" style="margin-top:6px">
+                <div style="font-size:0.82rem;line-height:2">
+                  <div><a href="https://maps.app.goo.gl/Jgc9uyy2r2r57f5P6" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🍡 Mochi mochi ↗</a> ── 手工現搗日式麻糬</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">13:55–15:55</div>
+            <div class="tl-content">
+              <strong><a href="https://maps.app.goo.gl/Ky3tjyQMoYmbfR896" target="_blank" style="color:var(--indigo);text-decoration:none">🏮 伏見稻荷大社 ↗</a></strong>
+              <div class="tl-note">13:15 二三寧坂結束 → 步行＋交通約 40 分 → 13:55 抵達 ／ 免費入場，預計停留 2 小時</div>
+              <div class="tl-highlight" style="margin-top:6px">
+                <div style="font-size:0.82rem;line-height:2">
+                  <div>🎋 千本鳥居，往山上走人越少，可拍無人鳥居</div>
+                  <div>🦊 白狐守（招財招福）</div>
+                  <div>
+                    <a href="https://maps.app.goo.gl/Ky3tjyQMoYmbfR896" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🍜 可乃古 ↗</a>
+                    <span class="tag gold">天婦羅蕎麥麵</span>
+                    <span style="color:var(--muted);font-size:0.75rem">11:00–15:30</span>
+                  </div>
+                  <div>
+                    <a href="https://maps.app.goo.gl/yzkYMTeJUniwc18g7" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🍧 稻荷茶寮 ↗</a>
+                    <span class="tag green">露臺稻荷刨冰</span>
+                    <span style="color:var(--muted);font-size:0.75rem">10:30–16:00</span>
+                  </div>
+                </div>
+                <div style="margin-top:4px;font-size:0.78rem;color:var(--muted)">
+                  📖 <a href="https://osaka.letsgojp.com/archives/72741/" target="_blank" style="color:var(--indigo)">伏見稻荷周邊美食介紹</a>　<a href="https://www.gltjp.com/zh-hant/article/item/20446/#zh-7-83" target="_blank" style="color:var(--indigo)">稻荷茶寮詳細介紹</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">16:00～</div>
+            <div class="tl-content">
+              <strong>🛍️ 京都逛街採購</strong>
+              <div class="tl-note">按順序逛，計畫購買 29 吋行李箱</div>
+              <div class="tl-highlight" style="margin-top:6px">
+                <div style="font-size:0.82rem;line-height:2.2">
+                  <div>① <a href="https://maps.app.goo.gl/RUr2tLW8gJhAGNEe9" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🏮 新京極商店街 ↗</a> <span style="color:var(--muted);font-size:0.75rem">── 京都最熱鬧的傳統商店街</span></div>
+                  <div>② <a href="https://maps.app.goo.gl/pUFMCN377coLWnj28" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🛒 唐吉訶德 京都四條河原町店 ↗</a> <span style="color:var(--muted);font-size:0.75rem">── 行李箱、伴手禮、藥妝</span></div>
+                  <div>③ <a href="https://maps.app.goo.gl/YeZB5GBh8Qd2jm8h8" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🏬 京都高島屋 S.C. ↗</a> <span style="color:var(--muted);font-size:0.75rem">── 高質感百貨，伴手禮最後掃貨</span></div>
+                </div>
+                <div style="font-size:0.78rem;color:var(--muted);margin-top:6px">💡 購買行李箱後可先請店家協助打包，或帶回飯店整理</div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">晚餐</div>
+            <div class="tl-content">
+              <strong><a href="https://maps.app.goo.gl/RxMFE251wf4JvhWB8" target="_blank" style="color:var(--indigo);text-decoration:none">🥩 燒肉七七四 ↗</a></strong>
+              <div class="tl-note">京都燒肉，逛完商店街後享用</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">晚上</div>
+            <div class="tl-content">返回旅之棲京都飯店，稍作休息整理
+              <div class="tl-note">辦理 Airporter 第三段寄送（行李寄往東橫INN 大阪日本橋）</div>
+            </div>
+          </div>
+        </div>
+        <div class="warn-box" style="margin-top:12px">⚠️ <span>今晚辦 Airporter 第三段：行李寄往東橫INN 大阪日本橋（4/17 16:00後取件）</span></div>
+        <div class="tip-box">💡 <span>明天旅之棲無早餐！今晚回飯店前記得在附近便利商店或超市買好明天早餐</span></div>
+        <div class="tip-box">💡 <span>穿和服在清水寺拍照 = 此行最美照片，09:30 前人潮最少，把握時機！</span></div>
+      </div>
+    </div>
+
+    <!-- DAY 5 -->
+    <div id="day5" class="day-card">
+      <div class="day-header" style="background:linear-gradient(135deg,#2c6e8b,#1a4f66)">
+        <div><div class="day-number">D5</div><div class="day-label">DAY FIVE</div></div>
+        <div class="day-title-wrap">
+          <h2>4/17（五）京都退房 → 大阪</h2>
+          <p>Airporter 寄行李 → 道頓堀 → 心齋橋 → TeamLab → 東橫INN</p>
+        </div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-time">09:00前</div><div class="tl-content"><strong>📦 Airporter 第三段寄行李</strong><div class="tl-note">旅之棲前台辦理，行李寄往東橫INN 大阪日本橋（16:00後取件）</div></div></div>
+          <div class="tl-item"><div class="tl-time">09:00</div><div class="tl-content"><strong>辦理退房，出發回大阪</strong><div class="tl-note">JR 新快速 京都→大阪，約 28–30 分，ICOCA 可搭</div></div></div>
+          <div class="tl-item">
+            <div class="tl-time">10:00～</div>
+            <div class="tl-content">
+              <strong>🛍️ 心齋橋 ＋ 道頓堀　建議路線：由北往南</strong>
+              <div class="tl-note">以心齋橋筋為主軸往南走，幾乎不需要繞路！</div>
+
+              <!-- LEAFLET MAP -->
+              <div id="day5-map" style="height:420px;border-radius:10px;margin:12px 0;border:1px solid var(--border);overflow:hidden;z-index:0;position:relative"></div>
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+              <script>
+              (function(){
+                if(document.readyState==='loading'){
+                  document.addEventListener('DOMContentLoaded',init);
+                } else { init(); }
+                function init(){
+                  var map = L.map('day5-map',{scrollWheelZoom:false}).setView([34.6708,135.5008],15);
+                  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+                    attribution:'© OpenStreetMap',maxZoom:19
+                  }).addTo(map);
+
+                  var spots = [
+                    // 🟦 北段
+                    {n:'① 大丸心齋橋店 本館',lat:34.6732,lng:135.5010,c:'#2c3e6b',t:'🟦 北段',h:'10:00–20:00'},
+                    {n:'② 宇治園 抹茶刨冰',lat:34.6731,lng:135.5015,c:'#2c3e6b',t:'🟦 北段',h:'10:30–21:00'},
+                    {n:'③ 松本清（藥妝）',lat:34.6720,lng:135.5013,c:'#2c3e6b',t:'🟦 北段',h:'10:00–23:00'},
+                    {n:'④ UNIQLO／ZARA',lat:34.6713,lng:135.5016,c:'#2c3e6b',t:'🟦 北段',h:'11:00–21:00'},
+                    {n:'⑤ 茶包販賣機 🎁',lat:34.6727,lng:135.5008,c:'#c8902a',t:'🎁 伴手禮',h:'日本各城市風格茶包'},
+                    {n:'⑥ Biople なんばマルイ（SINN PURETE B1）',lat:34.6688,lng:135.4999,c:'#4a6741',t:'🟦 北段',h:'11:00–20:00'},
+                    {n:'⑦ 心斎橋PARCO（SINN PURETE B1）',lat:34.6722,lng:135.5003,c:'#4a6741',t:'🟦 北段',h:'10:00–20:00'},
+                    // 🟨 美國村
+                    {n:'⑤ BigStep（美國村）',lat:34.6724,lng:135.4988,c:'#c8902a',t:'🟨 美國村',h:'11:00–23:00'},
+                    // 🟦 南段甜點
+                    {n:'⑥ 大阪浮世繪博士館',lat:34.6710,lng:135.5014,c:'#4a6741',t:'🟦 南段',h:'10:00–17:00 ¥1,000'},
+                    {n:'⑦ MooKEN 泡芙 ⚠️15:00前',lat:34.6717,lng:135.5011,c:'#c0392b',t:'🟦 南段',h:'11:00–15:00'},
+                    {n:'⑧ PABLO 半熟起司蛋糕',lat:34.6719,lng:135.5012,c:'#4a6741',t:'🟦 南段',h:'10:00–21:00'},
+                    {n:'⑨ STRAWBERRY MANIA',lat:34.6711,lng:135.5011,c:'#4a6741',t:'🟦 南段',h:'11:00–22:00'},
+                    // 🟥 道頓堀
+                    {n:'⑩ 戎橋（打卡點）',lat:34.6692,lng:135.5010,c:'#c0392b',t:'🟥 道頓堀',h:'格力高廣告牌正對面'},
+                    {n:'⑪ たこ家くくる 章魚燒',lat:34.6688,lng:135.5010,c:'#c0392b',t:'🟥 道頓堀',h:'11:00–22:00'},
+                    {n:'⑫ 章魚八',lat:34.6689,lng:135.5005,c:'#c0392b',t:'🟥 道頓堀',h:'10:00–22:00'},
+                    {n:'⑬ 御好燒 Mizuno 米其林',lat:34.6686,lng:135.5013,c:'#c0392b',t:'🟥 道頓堀',h:'11:00–22:00'},
+                    {n:'⑭ 味乃家 御好燒',lat:34.6687,lng:135.5008,c:'#c0392b',t:'🟥 道頓堀',h:'11:00–22:00'},
+                    {n:'⑮ 明 大阪燒',lat:34.6688,lng:135.5018,c:'#c0392b',t:'🟥 道頓堀',h:'11:30–21:30'},
+                    {n:'⑯ 法式可麗餅 Alcyon',lat:34.6691,lng:135.5016,c:'#c0392b',t:'🟥 道頓堀',h:'11:30–21:30'},
+                    {n:'⑰ 花丸軒（豬軟骨）',lat:34.6685,lng:135.5021,c:'#c0392b',t:'🟥 道頓堀',h:''},
+                    {n:'⑱ 金久右衛門 拉麵',lat:34.6689,lng:135.5003,c:'#c0392b',t:'🟥 道頓堀',h:'24小時'},
+                    {n:'⑲ next shikaku 牡蠣拉麵',lat:34.6693,lng:135.5020,c:'#c0392b',t:'🟥 道頓堀',h:'10:30–22:30'},
+                    {n:'⑳ 蟹道楽 道頓堀本店',lat:34.6686,lng:135.5016,c:'#c0392b',t:'🟥 道頓堀',h:'11:00–22:00'},
+                    {n:'㉑ LE CROISSANT 可頌',lat:34.6694,lng:135.5009,c:'#c0392b',t:'🟥 道頓堀',h:'10:30–20:30'},
+                    {n:'㉒ SUIPARA 泡泡華夫',lat:34.6690,lng:135.5007,c:'#c0392b',t:'🟥 道頓堀',h:'14:00–21:40'},
+                    {n:'㉓ 唐吉訶德 道頓堀',lat:34.6685,lng:135.5000,c:'#8b1a1a',t:'🟥 道頓堀',h:'24小時'},
+                    {n:'㉔ 551蓬萊 本店',lat:34.6683,lng:135.5012,c:'#8b1a1a',t:'🟥 道頓堀',h:'10:00–21:30'},
+                    {n:'㉕ 黒毛和牛 焼肉一（晚餐）',lat:34.6712,lng:135.5029,c:'#8b1a1a',t:'🟥 道頓堀',h:'17:00–23:00 ¥5,000/人'},
+                    // 🎁 伴手禮（金色）
+                    {n:'🎁 陸郎老爺爺起司蛋糕',lat:34.6695,lng:135.5003,c:'#c8902a',t:'🎁 伴手禮',h:'09:00–20:00'},
+                    {n:'🎁 安德魯蛋塔',lat:34.6693,lng:135.5001,c:'#c8902a',t:'🎁 伴手禮',h:'11:00–21:00'},
+                    {n:'🎁 Minamoalley 巧克力',lat:34.6694,lng:135.4998,c:'#c8902a',t:'🎁 伴手禮',h:'11:00–20:00 水果香氣夾心餅乾'},
+                    {n:'🎁 Ichibiri庵（4,000種伴手禮）',lat:34.6691,lng:135.5002,c:'#c8902a',t:'🎁 伴手禮',h:'10:00–22:00'},
+                    {n:'🎁 松本清（藥妝伴手禮）',lat:34.6720,lng:135.5013,c:'#c8902a',t:'🎁 伴手禮',h:'10:00–23:00 不最便宜但最齊全'}
+                  ];
+
+                  spots.forEach(function(s){
+                    var label = s.n.replace(/[①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳㉑㉒㉓㉔㉕]/,'').trim().slice(0,4);
+                    var num = s.n.match(/^[①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳㉑㉒㉓㉔㉕]/)?.[0]||'';
+                    var icon = L.divIcon({
+                      html:'<div style="background:'+s.c+';color:#fff;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.35);font-family:sans-serif;white-space:nowrap">'+num+'</div>',
+                      className:'',iconSize:[26,26],iconAnchor:[13,13]
+                    });
+                    L.marker([s.lat,s.lng],{icon:icon})
+                      .addTo(map)
+                      .bindPopup('<b>'+s.n+'</b><br><span style="color:#888;font-size:12px">'+s.t+'</span>'+(s.h?'<br><span style="font-size:12px">⏰ '+s.h+'</span>':''));
+                  });
+                }
+              })();
+              </script>
+              <!-- END MAP -->
+              <div style="display:flex;gap:12px;flex-wrap:wrap;margin:8px 0 12px;font-size:0.75rem">
+                <span><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#2c3e6b;margin-right:4px;vertical-align:middle"></span>心齋橋北段</span>
+                <span><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#c8902a;margin-right:4px;vertical-align:middle"></span>美國村 ／ 🎁伴手禮</span>
+                <span><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#4a6741;margin-right:4px;vertical-align:middle"></span>心齋橋南段</span>
+                <span><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#c0392b;margin-right:4px;vertical-align:middle"></span>道頓堀</span>
+                <span style="color:var(--muted)">（點圓點可查看詳情）</span>
+              </div>
+              <div class="tl-highlight" style="margin-top:8px">
+
+                <div style="font-size:0.78rem;font-weight:700;color:var(--indigo);margin-bottom:6px;letter-spacing:0.05em">🟦 北段｜心齋橋筋（大丸一帶）</div>
+                <div style="font-size:0.82rem;line-height:2.2;margin-bottom:10px">
+                  <div>① <a href="https://maps.app.goo.gl/SV37BepLD6JfYAkw6" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🏬 大丸心齋橋店 本館 ↗</a> <span style="color:var(--muted);font-size:0.75rem">10:00–20:00 ── 300年歷史百貨，建議開門就進</span></div>
+                  <div>② <a href="https://maps.app.goo.gl/DkcSQNXZKQvjLgLG9" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🍵 宇治園 抹茶刨冰 ↗</a> <span style="color:var(--muted);font-size:0.75rem">10:30–21:00 ── 150年老茶屋</span></div>
+                  <div>③ <a href="https://maps.app.goo.gl/WQ2eJuS6gaJHa9NB6" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">💊 松本清（藥妝）↗</a> <span class="tag green">🎁伴手禮</span> <span style="color:var(--muted);font-size:0.75rem">10:00–23:00 ── 不最便宜但最齊全</span></div>
+                  <div>④ <a href="https://maps.app.goo.gl/YxyZxDxvATzQwyxw6" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">👕 UNIQLO ↗</a> <span style="color:var(--muted);font-size:0.75rem">11:00–21:00</span> ／ <a href="https://maps.app.goo.gl/cVHfKNSGBtCerjRy8" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">👗 ZARA ↗</a> <span style="color:var(--muted);font-size:0.75rem">10:00–22:00</span></div>
+                  <div>⑤ <a href="https://maps.app.goo.gl/ri91ye8FCiUs6oHU6" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🍵 茶包販賣機 ↗</a> <span class="tag green">🎁伴手禮</span> <span style="color:var(--muted);font-size:0.75rem">── 販售日本各城市風格茶包，超特別！</span></div>
+                  <div>⑥ <a href="https://maps.app.goo.gl/ijXidf6P82BTqd5t8" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🌿 Biople なんばマルイ店 ↗</a> <span class="tag green">🎁伴手禮</span> <span style="color:var(--muted);font-size:0.75rem">11:00–20:00</span>
+                    <div style="font-size:0.78rem;color:var(--muted);margin-top:2px">
+                      <span class="tag" style="background:#4a6741">B1</span> <strong style="color:var(--indigo)">SINN PURETE</strong>　<a href="https://charming-lab.com/archives/24194" target="_blank" style="color:var(--indigo);font-weight:600;text-decoration:none">📖 詳細介紹 ↗</a>
+                    </div>
+                  </div>
+                  <div>⑦ <a href="https://maps.app.goo.gl/gwQ4GLyGQ1SgTAZJ8" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🏬 心斎橋PARCO ↗</a> <span class="tag green">🎁伴手禮</span> <span style="color:var(--muted);font-size:0.75rem">10:00–20:00</span>
+                    <div style="font-size:0.78rem;color:var(--muted);margin-top:2px">
+                      <span class="tag" style="background:#4a6741">B1</span> <strong style="color:var(--indigo)">SINN PURETE</strong>　<a href="https://charming-lab.com/archives/24194" target="_blank" style="color:var(--indigo);font-weight:600;text-decoration:none">📖 詳細介紹 ↗</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="font-size:0.78rem;font-weight:700;color:var(--moss);margin-bottom:6px;letter-spacing:0.05em">🟨 西側｜美國村（稍微繞一段）</div>
+                <div style="font-size:0.82rem;line-height:2.2;margin-bottom:10px">
+                  <div>⑤ <a href="https://maps.app.goo.gl/LcZCLoJw4NMsb4tJ6" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🎮 BigStep ↗</a> <span style="color:var(--muted);font-size:0.75rem">11:00–23:00 ── 1300台扭蛋機、街機彈珠台、滑板公園</span></div>
+                </div>
+
+                <div style="font-size:0.78rem;font-weight:700;color:var(--gold);margin-bottom:6px;letter-spacing:0.05em">🟦 南段｜心齋橋下段（甜點密集區）</div>
+                <div style="font-size:0.82rem;line-height:2.2;margin-bottom:10px">
+                  <div>⑥ <a href="https://maps.app.goo.gl/bezmjfDpqWM5W4Za9" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🖼️ 大阪浮世繪博士館 ↗</a> <span class="tag gold">¥1,000</span> <span style="color:var(--muted);font-size:0.75rem">10:00–17:00，3F</span></div>
+                  <div>⑦ <a href="https://maps.app.goo.gl/iKCCxVN1UuG5jXRT6" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🍮 MooKEN 泡芙 ↗</a> <span style="color:var(--red);font-size:0.75rem;font-weight:700">⚠️ 15:00前必去！</span> <span style="color:var(--muted);font-size:0.75rem">焦糖脆皮小泡芙</span></div>
+                  <div>⑧ <a href="https://maps.app.goo.gl/g4DaZcTR5oXojHfh6" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🧀 PABLO 半熟起司蛋糕 ↗</a> <span style="color:var(--muted);font-size:0.75rem">10:00–21:00</span></div>
+                  <div>⑨ <a href="https://maps.app.goo.gl/cEbSkDRJGH3nMxER7" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🍓 STRAWBERRY MANIA ↗</a> <span style="color:var(--muted);font-size:0.75rem">11:00–22:00</span></div>
+                </div>
+
+                <div style="font-size:0.78rem;font-weight:700;color:var(--red);margin-bottom:6px;letter-spacing:0.05em">🟥 南端｜道頓堀</div>
+                <div style="font-size:0.82rem;line-height:2.2">
+                  <div>⑩ <a href="https://maps.app.goo.gl/LiyeRVj9Wm71AZBAA" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">📸 戎橋 ↗</a> <span style="color:var(--muted);font-size:0.75rem">── 必到打卡點！格力高廣告牌正對面</span></div>
+                  <div>⑪ <a href="https://maps.app.goo.gl/SqYxCPnddBY4nudh8" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🐙 たこ家道頓堀くくる 章魚燒 ↗</a> <span style="color:var(--muted);font-size:0.75rem">11:00–22:00</span></div>
+                  <div>⑫ <a href="https://maps.app.goo.gl/4xwumHMaCQowGa8EA" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🐙 章魚八 ↗</a> <span style="color:var(--muted);font-size:0.75rem">10:00–22:00</span></div>
+                  <div>⑬ <a href="https://maps.app.goo.gl/5MgEkHS1nfF4CHkp8" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🥞 御好燒 Mizuno ↗</a> <span class="tag gold">米其林連續6年</span> <span style="color:var(--muted);font-size:0.75rem">11:00–22:00 ── 山芋燒、洋食燒，100%山藥麵團</span></div>
+                  <div>⑭ <a href="https://maps.app.goo.gl/x1fRbVhApXeet1mu5" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🥞 味乃家 御好燒 ↗</a> <span style="color:var(--muted);font-size:0.75rem">11:00–22:00</span></div>
+                  <div>⑮ <a href="https://maps.app.goo.gl/V4Y9e9rMunQLx44w6" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🥞 明 大阪燒 ↗</a> <span style="color:var(--muted);font-size:0.75rem">11:30–21:30</span></div>
+                  <div>⑯ <a href="https://maps.app.goo.gl/pZKMxp6sZrcbWv6F8" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🥐 法式可麗餅 Creperie Alcyon ↗</a> <span style="color:var(--muted);font-size:0.75rem">11:30–21:30 ── 鹽味蕎麥粉製作</span></div>
+                  <div>⑰ <a href="https://maps.app.goo.gl/LFZWWuJWxFLUvksL6" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🍖 花丸軒 難波・法善寺店 ↗</a> <span style="color:var(--muted);font-size:0.75rem">── 豬軟骨</span></div>
+                  <div>⑱ <a href="https://maps.app.goo.gl/G78byWimWt9ipF85A" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🍜 拉麵 金久右衛門 道頓堀店 ↗</a> <span class="tag">24小時</span> <span style="color:var(--muted);font-size:0.75rem">── 大阪最強拉麵之稱</span></div>
+                  <div>⑲ <a href="https://maps.app.goo.gl/uEppG9mRz8MzQsn46" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🦪 next shikaku ↗</a> <span style="color:var(--muted);font-size:0.75rem">10:30–22:30 ── 牡蠣湯頭拉麵</span></div>
+                  <div>⑳ <a href="https://maps.app.goo.gl/XPrSSaiiY7rhmCQ68" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🦀 蟹道楽 道頓堀本店 ↗</a> <span style="color:var(--muted);font-size:0.75rem">11:00–22:00 ── 蟹肉包</span></div>
+                  <div>㉑ <a href="https://maps.app.goo.gl/6H31jYEwH8mdAyq67" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🥐 LE CROISSANT 可頌 ↗</a> <span style="color:var(--muted);font-size:0.75rem">10:30–20:30 ── 明太子、蛋沙拉、沖繩地瓜蒙布朗</span></div>
+                  <div>㉒ <a href="https://maps.app.goo.gl/GrQU5GRxugbo8uhG7" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🧇 SUIPARA 泡泡華夫 ↗</a> <span style="color:var(--muted);font-size:0.75rem">14:00–21:40 ── 爆紅打卡甜點</span></div>
+                  <div>㉓ <a href="https://maps.app.goo.gl/V4TkpZ8dEWtRVMbe9" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🛒 唐吉訶德 道頓堀店 ↗</a> <span class="tag">24小時</span> <span class="tag green">🎁伴手禮</span> <span style="color:var(--muted);font-size:0.75rem">── 伴手禮、藥妝、行李箱一站搞定</span></div>
+                  <div>㉔ <a href="https://maps.app.goo.gl/92T4aobEb2ykYvaY6" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🥟 551蓬萊本店 手工豬肉包 ↗</a> <span class="tag green">🎁伴手禮</span> <span style="color:var(--muted);font-size:0.75rem">10:00–21:30 ── 買時索取保冷袋！</span></div>
+                  <div>㉕ <a href="https://maps.app.goo.gl/FxwUczQzbHXXJkBE6" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🥩 黒毛和牛 焼肉一 東心斎橋店（晚餐）↗</a> <span class="tag red">17:00–23:00</span> <span style="color:var(--muted);font-size:0.75rem">¥5,000/人</span></div>
+                </div>
+
+                <div style="font-size:0.78rem;font-weight:700;color:var(--moss);margin:12px 0 6px;letter-spacing:0.05em">🎁 伴手禮專區｜心齋橋・道頓堀</div>
+                <div style="font-size:0.82rem;line-height:2.2">
+                  <div>🎁 <a href="https://maps.app.goo.gl/51N1RMuVzGFjrmtu6" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🧀 陸郎老爺爺起司蛋糕 ↗</a> <span style="color:var(--muted);font-size:0.75rem">09:00–20:00</span></div>
+                  <div>🎁 <a href="https://maps.app.goo.gl/gajrk8Mn2gakEUhs6" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🥚 安德魯蛋塔 ↗</a> <span style="color:var(--muted);font-size:0.75rem">11:00–21:00</span></div>
+                  <div>🎁 <a href="https://maps.app.goo.gl/MfPWyVH9JtdAjdMm9" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🍫 Minamoalley 巧克力 ↗</a> <span style="color:var(--muted);font-size:0.75rem">11:00–20:00 ── 水果香氣夾心餅乾</span></div>
+                  <div>🎁 <a href="https://maps.app.goo.gl/pwJzcYoU3AYUUiB16" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🏪 Ichibiri庵（4,000種伴手禮）↗</a> <span style="color:var(--muted);font-size:0.75rem">10:00–22:00</span></div>
+                  <div>🎁 <span style="color:var(--indigo);font-weight:700">🦐 Calbee 章魚燒口味蝦條</span> <span style="color:var(--muted);font-size:0.75rem">── 關西限定！超商、唐吉訶德均有售</span></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="tl-item"><div class="tl-time">中間抽空</div><div class="tl-content"><strong>辦理東橫INN入住 ＋ 領取行李</strong><div class="tl-note">Airporter 行李 16:00後可取，入住後放下行李再繼續逛</div></div></div>
+          <div class="tl-item">
+            <div class="tl-time">19:00</div>
+            <div class="tl-content">
+              <strong><a href="https://maps.app.goo.gl/wUHSZyYvyGdLrfP98" target="_blank" style="color:var(--indigo);text-decoration:none">✨ TeamLab Botanical Garden Osaka ↗</a></strong>
+              <div class="tl-highlight" style="margin-top:6px">
+                <div style="font-size:0.82rem;line-height:1.9">
+                  <div>📋 <strong>訂單編號：26KK239240434</strong></div>
+                  <div>📅 使用日期：2026/04/17　方案：長居植物園門票</div>
+                </div>
+              </div>
+              <div class="tl-note" style="margin-top:6px">穿淺色衣服拍照效果最好！約 20:30 結束</div>
+              <div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap">
+                <a href="https://www.kkday.com/zh-tw/product/136858-japan-nagai-teamlab-botanical-garden-osaka-e-ticket" target="_blank" class="ticket-link">🎟️ KKday 購票連結</a>
+                <a href="https://mail.google.com/mail/u/0/popout?ver=1kb54q60x21o5&search=inbox&th=%23thread-f%3A1861384822171101528&cvid=2" target="_blank" class="ticket-link" style="background:var(--moss)">📧 門票連結</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">20:30–21:00</div>
+            <div class="tl-content">
+              <strong>移動：長居植物園 → 梅田</strong>
+              <div class="tl-note">地下鐵 御堂筋線 長居站→梅田站，約 25 分鐘</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">21:00–22:00</div>
+            <div class="tl-content">
+              <strong>🏙️ 梅田藍天大廈 空中庭園展望台</strong>
+              <div class="tl-note">地上 173m，大阪最經典夜景 ／ 門票 ¥2,000 ／ 最後入場 22:00</div>
+              <div class="tl-highlight" style="margin-top:6px">
+                <div style="font-size:0.82rem;line-height:2">
+                  <div>🔭 <strong>空中庭園</strong>：露天360度環景，大阪夜景一覽無遺</div>
+                  <div>🛗 <strong>科幻感透明手扶梯</strong>：連接兩棟大樓的透明管狀電扶梯，超震撼</div>
+                  <div>🪞 <strong>半鏡面玻璃外牆</strong>：建築本身就是打卡點</div>
+                  <div>⭐ <strong>星光步道</strong>：地面星空圖案裝置藝術</div>
+                  <div style="margin-top:6px"><a href="https://maps.app.goo.gl/aNvu1DTwb66bUEci7" target="_blank" style="color:var(--indigo);font-weight:700;text-decoration:none">🍦 Okoppe Milk Stand Hanshin Umeda ↗</a> <span style="color:var(--muted);font-size:0.75rem">── 北海道牛奶冰淇淋</span></div>
+                </div>
+              </div>
+              <div style="margin-top:8px">
+                <a href="https://www.kkday.com/zh-tw/product/22352-night-views-at-umeda-sky-building-kuchu-teien-observatory-osaka" target="_blank" class="ticket-link">🎟️ KKday 購票連結</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">22:30頃</div>
+            <div class="tl-content"><strong>返回東橫INN，整理行李</strong><div class="tl-note">御堂筋線→難波，步行 10 分 ／ 準備明天回台灣，液體類放託運</div></div>
+          </div>
+        </div>
+        <div class="warn-box" style="margin-top:12px">⚠️ <span>今晚認真打包！液體類（醬油、果醬）必須放託運，551蓬萊最後今晚或明早買</span></div>
+      </div>
+    </div>
+
+    <!-- DAY 6 -->
+    <div id="day6" class="day-card">
+      <div class="day-header" style="background:linear-gradient(135deg,#b8860b,#8b6508)">
+        <div><div class="day-number">D6</div><div class="day-label">DAY SIX</div></div>
+        <div class="day-title-wrap">
+          <h2>4/18（六）回程日</h2>
+          <p>虎航 IT211 ─ KIX 11:15 起飛 ／ 桃園 13:10 抵達</p>
+        </div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-time">07:00–07:30</div><div class="tl-content"><strong>東橫INN 早餐（含）</strong><div class="tl-note">飯店內用，快速吃完，保留出發時間</div></div></div>
+          <div class="tl-item"><div class="tl-time">07:30–08:00</div><div class="tl-content">最後行李確認 ＋ 辦理退房（10:00前）<div class="tl-note">液體類再確認放託運，貴重物品隨身</div></div></div>
+          <div class="tl-item"><div class="tl-time">08:00</div><div class="tl-content"><strong>⚠️ 出發！步行至南海難波站</strong><div class="tl-note">約 10 分鐘步行</div></div></div>
+          <div class="tl-item"><div class="tl-time">08:10–08:50</div><div class="tl-content"><strong>南海電鐵特急 Rapi:t → 關西機場</strong><div class="tl-note">34–38 分鐘直達，¥1,490，ICOCA 可搭 ／ 約每30分一班</div></div></div>
+          <div class="tl-item"><div class="tl-time">08:45–09:00</div><div class="tl-content"><strong>抵達關西機場 KIX T1</strong><div class="tl-note">距起飛 2.5 小時，符合虎航建議提前報到時間</div></div></div>
+          <div class="tl-item"><div class="tl-time">09:00–09:30</div><div class="tl-content">辦理登機手續 ＋ 行李託運<div class="tl-note">虎航 IT211，確認行李重量限制</div></div></div>
+          <div class="tl-item"><div class="tl-time">09:30–10:30</div><div class="tl-content"><strong>退稅（TAX FREE）＋ 免稅店</strong><div class="tl-note">Royce 生巧克力、酒類最後補購 ／ 免稅品出境前勿拆封！</div></div></div>
+          <div class="tl-item"><div class="tl-time">10:45</div><div class="tl-content">前往登機口，準備登機</div></div>
+          <div class="tl-item"><div class="tl-time">11:15</div><div class="tl-content"><strong>虎航 IT211 起飛返台 🇹🇼</strong><div class="tl-note">飛行約 1 小時 55 分，抵達桃園 13:10</div></div></div>
+        </div>
+        <div class="warn-box" style="margin-top:12px">⚠️ <span>551蓬萊豬肉包若未買，可在關西機場內購買（需冷藏，向店家索取保冷袋）</span></div>
+        <div class="warn-box">⚠️ <span>液體類伴手禮（醬油、果醬、酒）必須放入託運行李，不可手提上機</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOUVENIRS -->
+  <div id="souvenirs">
+    <div class="section-title"><span class="num">六</span>伴手禮採購清單</div>
+
+    <div class="subsection">🍰 甜點 / 特色食品</div>
+    <div class="souvenir-grid">
+      <div class="souvenir-item"><h5>🧀 陸郎老爺爺起司蛋糕</h5><p>現烤濃郁起司蛋糕</p><div class="where"><a href="https://maps.app.goo.gl/51N1RMuVzGFjrmtu6" target="_blank" style="color:var(--indigo)">📍 地圖 ↗</a>　09:00–20:00</div></div>
+      <div class="souvenir-item"><h5>🥚 安德魯蛋塔</h5><p>葡式蛋塔，外皮酥脆</p><div class="where"><a href="https://maps.app.goo.gl/gajrk8Mn2gakEUhs6" target="_blank" style="color:var(--indigo)">📍 地圖 ↗</a>　11:00–21:00</div></div>
+      <div class="souvenir-item"><h5>🍫 Minamoalley 巧克力</h5><p>滿滿水果香氣的迷人巧克力夾心餅乾</p><div class="where"><a href="https://maps.app.goo.gl/MfPWyVH9JtdAjdMm9" target="_blank" style="color:var(--indigo)">📍 地圖 ↗</a>　11:00–20:00</div></div>
+      <div class="souvenir-item"><h5>🍫 Royce 生巧克力</h5><p>抹茶/原味，需冷藏</p><div class="where">📍 關西機場免稅店</div></div>
+      <div class="souvenir-item"><h5>🍫 抹茶 KitKat</h5><p>日本限定口味（玄米、宇治金時）</p><div class="where">📍 唐吉訶德、超商</div></div>
+      <div class="souvenir-item"><h5>🍪 白い恋人</h5><p>北海道經典奶油夾心餅乾</p><div class="where">📍 機場或百貨</div></div>
+    </div>
+
+    <div class="subsection" style="margin-top:20px">🍵 特色飲品 / 茶</div>
+    <div class="souvenir-grid">
+      <div class="souvenir-item"><h5>🍵 茶包販賣機</h5><p>販售日本各城市風格茶包，超特別！設計感滿分</p><div class="where"><a href="https://maps.app.goo.gl/ri91ye8FCiUs6oHU6" target="_blank" style="color:var(--indigo)">📍 地圖 ↗</a></div></div>
+    </div>
+
+    <div class="subsection" style="margin-top:20px">🌿 保養品 / 雜貨</div>
+    <div class="souvenir-grid">
+      <div class="souvenir-item">
+        <h5>🌿 SINN PURETE</h5>
+        <p>天然成分保養品牌，設計感包裝超適合送禮</p>
+        <div class="where">
+          <a href="https://maps.app.goo.gl/Vmzu5JrwXwWh7kpDA" target="_blank" style="color:var(--indigo)">📍 Kyoto LOFT 5F ↗</a>　（D3晚餐後）
+        </div>
+        <div class="where" style="margin-top:4px">
+          <a href="https://maps.app.goo.gl/ijXidf6P82BTqd5t8" target="_blank" style="color:var(--indigo)">📍 Biople なんばマルイ B1 ↗</a>
+        </div>
+        <div class="where" style="margin-top:4px">
+          <a href="https://maps.app.goo.gl/gwQ4GLyGQ1SgTAZJ8" target="_blank" style="color:var(--indigo)">📍 心斎橋PARCO B1 ↗</a>
+        </div>
+        <div class="where" style="margin-top:6px">
+          <a href="https://charming-lab.com/archives/24194" target="_blank" style="color:var(--indigo);font-weight:600">📖 詳細介紹 ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection" style="margin-top:20px">🍟 零食 / 點心</div>
+    <div class="souvenir-grid">
+      <div class="souvenir-item"><h5>🦐 Calbee 章魚燒口味蝦條</h5><p>關西限定！章魚燒風味蝦條，超好帶的伴手禮</p><div class="where">📍 唐吉訶德、超商、關西限定伴手禮店</div></div>
+      <div class="souvenir-item"><h5>🍜 一風堂/一蘭 泡麵</h5><p>拉麵伴手禮，最受歡迎</p><div class="where">📍 超市、唐吉訶德</div></div>
+      <div class="souvenir-item"><h5>🐙 大阪限定零食</h5><p>章魚燒口味等大阪限定版</p><div class="where">📍 道頓堀、心齋橋</div></div>
+    </div>
+
+    <div class="subsection" style="margin-top:20px">🎁 綜合伴手禮店</div>
+    <div class="souvenir-grid">
+      <div class="souvenir-item"><h5>🏪 Ichibiri庵</h5><p>4,000種伴手禮一次買齊，超方便！</p><div class="where"><a href="https://maps.app.goo.gl/pwJzcYoU3AYUUiB16" target="_blank" style="color:var(--indigo)">📍 地圖 ↗</a>　10:00–22:00</div></div>
+      <div class="souvenir-item"><h5>🛒 唐吉訶德 道頓堀</h5><p>零食、藥妝、行李箱一站搞定</p><div class="where"><a href="https://maps.app.goo.gl/V4TkpZ8dEWtRVMbe9" target="_blank" style="color:var(--indigo)">📍 地圖 ↗</a>　24小時</div></div>
+    </div>
+
+    <div class="subsection" style="margin-top:20px">💊 藥妝</div>
+    <div class="souvenir-grid">
+      <div class="souvenir-item"><h5>💊 日本藥妝</h5><p>佑必佑、龍角散、眼藥水、面膜</p><div class="where">📍 松本清、鶴羽藥妝</div></div>
+    </div>
+
+    <div class="subsection" style="margin-top:20px">🎎 京都伴手禮</div>
+    <div class="souvenir-grid">
+      <div class="souvenir-item"><h5>🥟 551蓬萊豬肉包</h5><p>大阪名物！需冷凍帶回，索取保冷袋</p><div class="where"><a href="https://maps.app.goo.gl/92T4aobEb2ykYvaY6" target="_blank" style="color:var(--indigo)">📍 道頓堀本店 ↗</a>　10:00–21:30（最後一天買）</div></div>
+      <div class="souvenir-item"><h5>🥬 京都漬物</h5><p>西京漬、千枚漬，傳統醃漬物</p><div class="where">📍 錦市場、伊勢丹</div></div>
+      <div class="souvenir-item"><h5>🍡 生八橋</h5><p>抹茶、黑芝麻口味軟糯和菓子</p><div class="where">📍 京都各處</div></div>
+      <div class="souvenir-item"><h5>🍵 宇治抹茶粉</h5><p>高品質抹茶粉，送禮大方</p><div class="where">📍 伊藤久右衛門</div></div>
+      <div class="souvenir-item"><h5>🍶 文の助茶屋甘酒</h5><p>京都傳統甘酒，溫潤不辣</p><div class="where">📍 京都各茶屋</div></div>
+      <div class="souvenir-item"><h5>🍬 和三盆糖</h5><p>四國傳統精緻砂糖，可泡茶</p><div class="where">📍 百貨、和菓子店</div></div>
+    </div>
+
+    <div class="warn-box" style="margin-top:16px">⚠️ <span>液體類（醬油、果醬、酒）必須放入託運行李，不可手提上機</span></div>
+    <div class="warn-box">⚠️ <span>551蓬萊豬肉包需冷藏，買時索取保冷袋，建議最後一天再買</span></div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div id="checklist">
+    <div class="section-title"><span class="num">七</span>出發前必確認清單</div>
+    <ul class="checklist">
+      <li>TeamLab Borderless 大阪：確認 4/17 開放日期 → <a href="https://www.teamlab.art/e/botanicalgarden/" target="_blank">teamlab.art</a></li>
+      <li>金閣寺閉園時間確認（目前資訊 17:00）→ <a href="https://www.shokoku-ji.jp/kinkakuji/" target="_blank">官網確認</a></li>
+      <li>和服租借確認信：確認 4/16 09:00 預約，截圖備存</li>
+      <li>Airporter 第二段預約：4/15 東方飯店 → 旅之棲京都飯店</li>
+      <li>Airporter 第三段預約：4/17 旅之棲 → 東橫INN 大阪日本橋</li>
+      <li>帝王蟹餐廳訂位：かに道楽 或 蟹のみかた（提前預約）</li>
+      <li>Visit Japan Web 申報：出發前至少 6 小時完成，取得 QR Code</li>
+      <li>USJ Studio Pass：確認已購買（4/14 使用，需與 Express Pass 同日）</li>
+      <li>梅田藍天大廈門票：<a href="https://www.kkday.com/zh-tw/product/22352-night-views-at-umeda-sky-building-kuchu-teien-observatory-osaka" target="_blank">KKday 購票連結</a>已記錄</li>
+      <li>Byodo-Ji Temple 確認：是否為「平等院」（宇治），若要去需另排半天</li>
+    </ul>
+  </div>
+
+  <!-- EMERGENCY -->
+  <div id="emergency">
+    <div class="section-title"><span class="num">八</span>緊急聯絡資訊</div>
+    <div class="emergency-grid">
+      <div class="emergency-item">
+        <div class="phone">+81-6-6443-8481</div>
+        <div class="label">台灣駐大阪辦事處 TECRO</div>
+      </div>
+      <div class="emergency-item">
+        <div class="phone">119</div>
+        <div class="label">日本急救（救護車）</div>
+      </div>
+      <div class="emergency-item">
+        <div class="phone">110</div>
+        <div class="label">日本警察</div>
+      </div>
+      <div class="emergency-item">
+        <div class="phone">+81-72-455-2500</div>
+        <div class="label">關西機場旅客服務</div>
+      </div>
+    </div>
+    <div class="warn-box" style="margin-top:12px">⚠️ <span>遺失護照：立即聯絡台灣駐外館處，並向當地警察局報案取得遺失證明</span></div>
+  </div>
+
+  <div style="text-align:center;margin-top:60px;padding:30px 0;border-top:1px solid var(--border);color:var(--muted);font-size:0.82rem">
+    🌸 旅途平安順利，玩得開心！🌸
+  </div>
+
+</div>
+</body>
+</html>
